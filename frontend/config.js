@@ -8,5 +8,5 @@ export const APP_CONFIG = Object.freeze({
   supabaseUrl: "https://zabzhbwuyotftcsbhelq.supabase.co",
   supabasePublishableKey:
     "sb_publishable_TmeOzvfb1KtNbIJJdnwovw_8hcP0okd",
-  backendBaseUrl: "http://localhost:8000",
+  backendBaseUrl: "http://localhost:8001",
 });

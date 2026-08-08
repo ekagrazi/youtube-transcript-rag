@@ -54,15 +54,15 @@ class Settings(BaseSettings):
     hosted_model_name: str | None = None
     llm_temperature: float = Field(default=0.1, ge=0, le=2)
     llm_request_timeout_seconds: float = Field(default=120.0, gt=0, le=600)
-    rag_top_k: int = Field(default=4, ge=1, le=20)
-    chat_history_messages: int = Field(default=6, ge=0, le=20)
+    rag_top_k: int = Field(default=8, ge=1, le=20)
+    chat_history_messages: int = Field(default=10, ge=0, le=20)
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     embedding_dimension: int = Field(default=384, ge=1)
     embedding_batch_size: int = Field(default=32, ge=1, le=512)
     vector_insert_batch_size: int = Field(default=100, ge=1, le=500)
     transcript_languages: str = "en"
     transcript_chunk_size: int = Field(default=1000, ge=100, le=10000)
-    transcript_chunk_overlap: int = Field(default=200, ge=0, le=5000)
+    transcript_chunk_overlap: int = Field(default=400, ge=0, le=5000)
     transcript_proxy_username: str | None = None
     transcript_proxy_password: SecretStr | None = None
 
