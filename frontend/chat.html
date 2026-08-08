@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Ingest YouTube transcripts and ask grounded questions."
+    >
+    <title>Workspace — Framewise</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://zabzhbwuyotftcsbhelq.supabase.co">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body data-page="chat" class="workspace-page">
+    <a class="skip-link" href="#conversation">Skip to conversation</a>
+
+    <div id="session-loader" class="session-loader" role="status">
+      <span class="loader-mark" aria-hidden="true"><span></span></span>
+      <span>Restoring your workspace…</span>
+    </div>
+
+    <div id="workspace" class="workspace" hidden>
+      <header class="app-header">
+        <a class="brand" href="./chat.html" aria-label="Framewise workspace">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>Framewise</span>
+        </a>
+
+        <div class="header-context" aria-hidden="true">
+          <span class="context-divider"></span>
+          <span>Transcript workspace</span>
+        </div>
+
+        <div class="account-menu">
+          <span id="user-email" class="user-email"></span>
+          <button id="logout-button" class="quiet-button" type="button">
+            Sign out
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace-grid">
+        <aside class="video-sidebar" aria-labelledby="library-title">
+          <div class="sidebar-heading">
+            <div>
+              <p class="eyebrow">
+                <span aria-hidden="true"></span>
+                Knowledge base
+              </p>
+              <h1 id="library-title">Your videos</h1>
+            </div>
+            <button
+              id="refresh-videos"
+              class="icon-button"
+              type="button"
+              aria-label="Refresh video list"
+              title="Refresh video list"
+            >
+              ↻
+            </button>
+          </div>
+
+          <form id="ingest-form" class="ingest-form">
+            <label for="youtube-url">Add a YouTube video</label>
+            <div class="ingest-row">
+              <input
+                id="youtube-url"
+                name="youtube_url"
+                type="url"
+                inputmode="url"
+                autocomplete="url"
+                placeholder="Paste a YouTube URL"
+                maxlength="2048"
+                required
+              >
+              <button
+                id="ingest-submit"
+                class="square-button"
+                type="submit"
+                aria-label="Ingest video"
+                title="Ingest video"
+              >
+                <span aria-hidden="true">＋</span>
+              </button>
+            </div>
+            <p class="field-help">
+              We’ll fetch, index, and prepare the transcript.
+            </p>
+          </form>
+
+          <div
+            id="ingest-status"
+            class="sidebar-status"
+            role="status"
+            aria-live="polite"
+            hidden
+          ></div>
+
+          <div class="library-label">
+            <span>Library</span>
+            <span id="video-count" class="count-badge">0</span>
+          </div>
+          <p class="library-retention">
+            Removed automatically after 7 days without activity.
+          </p>
+
+          <div id="video-list" class="video-list" aria-live="polite">
+            <div class="list-skeleton" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </aside>
+
+        <section id="conversation" class="conversation-panel" aria-labelledby="video-title">
+          <header class="conversation-header">
+            <div class="video-heading">
+              <p id="video-kicker" class="eyebrow">
+                <span aria-hidden="true"></span>
+                No video selected
+              </p>
+              <h2 id="video-title">Start with a transcript</h2>
+            </div>
+            <a
+              id="open-video"
+              class="watch-link"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              hidden
+            >
+              Watch on YouTube
+              <span aria-hidden="true">↗</span>
+            </a>
+          </header>
+
+          <div
+            id="chat-status"
+            class="sr-status"
+            role="status"
+            aria-live="polite"
+          ></div>
+
+          <div id="message-list" class="message-list">
+            <div id="empty-chat" class="empty-chat">
+              <div class="empty-orbit" aria-hidden="true">
+                <span class="empty-play">▶</span>
+                <span class="orbit-dot orbit-dot-one"></span>
+                <span class="orbit-dot orbit-dot-two"></span>
+              </div>
+              <p class="eyebrow centered">
+                <span aria-hidden="true"></span>
+                Transcript intelligence
+              </p>
+              <h3>Bring a video into focus.</h3>
+              <p>
+                Add a YouTube video or choose one from your library, then ask
+                questions grounded in what was actually said.
+              </p>
+            </div>
+          </div>
+
+          <form id="question-form" class="question-form">
+            <label class="sr-only" for="question">Ask about this video</label>
+            <textarea
+              id="question"
+              name="question"
+              rows="1"
+              maxlength="4000"
+              placeholder="Select a ready video to start asking questions…"
+              disabled
+              required
+            ></textarea>
+            <div class="composer-footer">
+              <span class="composer-hint">
+                <kbd>Enter</kbd> to send · <kbd>Shift</kbd> + <kbd>Enter</kbd>
+                for a new line
+              </span>
+              <button
+                id="question-submit"
+                class="send-button"
+                type="submit"
+                disabled
+              >
+                <span>Ask</span>
+                <span aria-hidden="true">↑</span>
+              </button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Sign in to ask grounded questions about YouTube transcripts."
+    >
+    <title>Framewise — Transcript-grounded answers</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://zabzhbwuyotftcsbhelq.supabase.co">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body data-page="auth" class="auth-page">
+    <a class="skip-link" href="#auth-form">Skip to sign in</a>
+
+    <main class="auth-layout">
+      <section class="auth-story" aria-labelledby="story-title">
+        <a class="brand brand-light" href="./index.html" aria-label="Framewise home">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span>
+          </span>
+          <span>Framewise</span>
+        </a>
+
+        <div class="story-copy">
+          <p class="eyebrow eyebrow-light">
+            <span aria-hidden="true"></span>
+            Answers that show their work
+          </p>
+          <h1 id="story-title">Ask the video.<br>Keep the receipts.</h1>
+          <p class="story-lede">
+            Turn any YouTube transcript into a focused conversation, with
+            timestamped evidence attached to every answer.
+          </p>
+        </div>
+
+        <div class="evidence-preview" aria-hidden="true">
+          <div class="preview-topline">
+            <span>Transcript evidence</span>
+            <span class="preview-status">Grounded</span>
+          </div>
+          <p>
+            “The biggest shift happened when the team stopped optimizing for
+            output and started optimizing for learning.”
+          </p>
+          <div class="preview-source">
+            <span class="play-dot">▶</span>
+            <span>18:42</span>
+            <span class="source-line"></span>
+            <span>91% match</span>
+          </div>
+        </div>
+
+        <p class="story-footnote">
+          Private chat history. Shared transcript knowledge. No guesswork.
+        </p>
+      </section>
+
+      <section class="auth-entry" aria-labelledby="auth-title">
+        <div class="auth-card">
+          <div class="mobile-brand">
+            <a class="brand" href="./index.html" aria-label="Framewise home">
+              <span class="brand-mark" aria-hidden="true"><span></span></span>
+              <span>Framewise</span>
+            </a>
+          </div>
+
+          <p class="eyebrow">
+            <span aria-hidden="true"></span>
+            Your research workspace
+          </p>
+          <h2 id="auth-title">Welcome back</h2>
+          <p id="auth-intro" class="auth-intro">
+            Sign in to continue your transcript conversations.
+          </p>
+
+          <div class="auth-tabs" role="tablist" aria-label="Account action">
+            <button
+              id="login-tab"
+              class="auth-tab is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="auth-form"
+              data-auth-mode="login"
+            >
+              Sign in
+            </button>
+            <button
+              id="signup-tab"
+              class="auth-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="auth-form"
+              data-auth-mode="signup"
+            >
+              Create account
+            </button>
+          </div>
+
+          <form
+            id="auth-form"
+            class="auth-form"
+            role="tabpanel"
+            aria-labelledby="login-tab"
+            novalidate
+          >
+            <div class="field-group">
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                maxlength="320"
+                required
+              >
+            </div>
+
+            <div class="field-group">
+              <div class="label-row">
+                <label for="password">Password</label>
+                <span id="password-hint"></span>
+              </div>
+              <div class="password-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Enter your password"
+                  minlength="6"
+                  maxlength="128"
+                  required
+                >
+                <button
+                  id="password-toggle"
+                  class="password-toggle"
+                  type="button"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  <span class="eye-icon" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+
+            <div
+              id="auth-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></div>
+
+            <button id="auth-submit" class="primary-button" type="submit">
+              <span data-button-label>Sign in</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </form>
+        </div>
+
+        <footer class="creator-footer" aria-label="Creator information">
+          <div class="creator-heading">
+            <span>Made by</span>
+            <a
+              href="https://ekagrazi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ekagra Gupta
+            </a>
+          </div>
+
+          <nav class="creator-links" aria-label="Ekagra Gupta links">
+            <a
+              href="https://ekagrazi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Website
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ekagrazi/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ekagrazi"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </nav>
+
+          <p class="copyright">
+            © 2026 Ekagra Gupta. All rights reserved.
+          </p>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>
