@@ -12,7 +12,7 @@ timestamped evidence from the original video.
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.141-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-Postgres%20%2B%20Auth-3FCF8E?logo=supabase&logoColor=white)](https://supabase.com/)
 [![LangChain](https://img.shields.io/badge/LangChain-RAG-1C3C3C)](https://www.langchain.com/)
-[![Tests](https://img.shields.io/badge/tests-44%20passed-brightgreen)](#testing)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen)](#testing)
 
 [Features](#features) • [Architecture](#architecture) • [Setup](#local-setup) • [API](#api-reference) • [Deployment](#deployment)
 
@@ -252,7 +252,7 @@ All video and chat endpoints require a valid Supabase bearer token.
 
 ## Testing
 
-The backend currently includes 44 automated tests covering authentication, URL
+The backend includes a comprehensive automated test suite covering authentication, URL
 parsing, transcript chunking, ingestion idempotency, retrieval isolation, chat
 history, provider selection, API behavior, and failure handling.
 
@@ -296,51 +296,6 @@ HOSTED_MODEL_NAME=llama-3.1-8b-instant
 
 Hosted credentials must be stored in the deployment platform's secret manager, not
 in the repository or frontend bundle.
-
-## Deployment
-
-### Backend
-
-The repository includes a native-Python [`render.yaml`](render.yaml) Blueprint.
-In Render, create a new Blueprint from this repository and provide the prompted
-environment values without committing them.
-
-Required dashboard values:
-
-```text
-CORS_ORIGINS=http://localhost:3000
-SUPABASE_URL=<your Supabase project URL>
-SUPABASE_PUBLISHABLE_KEY=<your Supabase publishable key>
-SUPABASE_SECRET_KEY=<your backend secret key>
-HOSTED_API_KEY=<your Groq API key>
-```
-
-Use the local origin during the backend-only deployment. Replace `CORS_ORIGINS`
-with the final Vercel origin after the frontend has been created.
-
-The equivalent manual Render configuration is:
-
-```text
-Runtime:        Python 3
-Root directory: backend
-Build command:  python -m pip install -r requirements.lock
-Start command:  uvicorn app.main:app --host 0.0.0.0 --port $PORT
-Region:         Singapore
-Health check:   /health
-```
-
-Set the production frontend origin in `CORS_ORIGINS` and configure all backend
-secrets through the hosting dashboard.
-
-### Frontend
-
-Deploy the `frontend` directory as a static Vercel project. Before deployment,
-update `frontend/config.js` with the production API URL and public Supabase values.
-
-Also configure the Vercel URL in Supabase Auth as an allowed site and redirect URL.
-
-> YouTube may restrict transcript requests from cloud-hosted IP ranges. Optional
-> proxy credentials are supported for environments where direct retrieval is blocked.
 
 ## Author
 
