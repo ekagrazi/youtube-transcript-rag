@@ -252,10 +252,6 @@ All video and chat endpoints require a valid Supabase bearer token.
 
 ## Testing
 
-The backend includes a comprehensive automated test suite covering authentication, URL
-parsing, transcript chunking, ingestion idempotency, retrieval isolation, chat
-history, provider selection, API behavior, and failure handling.
-
 PowerShell:
 
 ```powershell
