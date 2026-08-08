@@ -118,7 +118,6 @@ youtube-transcript-rag/
 - Python 3.12+
 - A Supabase project
 - Ollama for local inference
-- Node.js only for the optional JavaScript syntax check
 
 ### 1. Clone the repository
 
@@ -137,12 +136,6 @@ PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
-```
-
-macOS or Linux:
-
-```bash
-source .venv/bin/activate
 ```
 
 ### 3. Install dependencies
@@ -260,13 +253,6 @@ python -m pytest backend
 node --check frontend/app.js
 ```
 
-macOS or Linux:
-
-```bash
-PYTHONPATH=backend python -m pytest backend
-node --check frontend/app.js
-```
-
 ## Security model
 
 - Supabase verifies user identity; the API independently validates every bearer token.
@@ -279,19 +265,6 @@ node --check frontend/app.js
 - A daily database job removes relationships inactive for seven days and deletes
   transcript data only when no user still references the video.
 
-## Hosted LLM configuration
-
-For Groq-backed production inference, configure these variables on the backend host:
-
-```env
-LLM_PROVIDER=hosted
-HOSTED_API_BASE_URL=https://api.groq.com/openai/v1
-HOSTED_API_KEY=your_groq_api_key
-HOSTED_MODEL_NAME=llama-3.1-8b-instant
-```
-
-Hosted credentials must be stored in the deployment platform's secret manager, not
-in the repository or frontend bundle.
 
 ## Author
 
